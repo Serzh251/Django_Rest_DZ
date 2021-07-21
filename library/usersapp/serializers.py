@@ -6,4 +6,4 @@ class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ('username', 'last_name', 'email') # у суперюзера поля немного иные
-        fields = "__all__"
+        # fields = "__all__"
