@@ -2,7 +2,4 @@
 .idea/
 
 library/library/__pycache__/
-
-library/library/__init__.py
-
-library/usersapp/__pycache__/
+library/library/frontend/node_modules
