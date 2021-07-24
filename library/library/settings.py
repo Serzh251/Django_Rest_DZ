@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'usersapp',
     'corsheaders',
     'todo',
-    # 'django_rest_framework_camel_case',
 ]
 
 MIDDLEWARE = [
