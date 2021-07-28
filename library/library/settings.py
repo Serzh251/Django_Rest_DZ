@@ -16,7 +16,7 @@ CORS_ALLOWED_ORIGINS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework.renderers.JSONRenderer',
         'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
         'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
         # 'rest_framework.renderers.BrowsableAPIRenderer',
@@ -25,6 +25,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'djangorestframework_camel_case.parser.CamelCaseJSONParser',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 if DEBUG:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'].append('rest_framework.renderers.BrowsableAPIRenderer')
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     'usersapp',
     'corsheaders',
     'todo',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
