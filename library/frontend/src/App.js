@@ -5,6 +5,20 @@ import './App.css';
 import UserList from './components/Users'
 import MenuList from "./components/Menu";
 import FooterList from "./components/Footer";
+import ProjectList from "./components/Projects";
+import TodoList from "./components/Todo";
+import {HashRouter, Route, BrowserRouter, Link, Switch, Redirect} from 'react-router-dom'
+import UserProjectsList from "./components/UserProjectsList";
+import ProjectDetail from "./components/ProjectDetail";
+
+
+const NotFound404 = ({ location }) => {
+  return (
+    <div>
+        <h1>Страница по адресу '{location.pathname}' не найдена</h1>
+    </div>
+  )
+}
 
 class App extends React.Component {
 
@@ -13,6 +27,8 @@ class App extends React.Component {
        this.state = {
            'users': [],
            'menu':[],
+           'project':[],
+           'todo':[],
            'footer':[]
        }
    }
@@ -20,7 +36,7 @@ class App extends React.Component {
    componentDidMount() {
        axios.get('http://127.0.0.1:8090/api/users/')
            .then(response => {
-               const users = response.data
+               const users = response.data.results
                    this.setState({
                        'users': users
                    })
@@ -29,22 +45,22 @@ class App extends React.Component {
                error => console.log(error)
        )
 
-       axios.get('http://127.0.0.1:8090/api/menu/')
+       axios.get('http://127.0.0.1:8090/api/project/')
            .then(response => {
-               const menu = response.data
+               const project = response.data.results
                    this.setState({
-                       'menu': menu
+                       'project': project
                    })
                }
            ).catch(
                error => console.log(error)
        )
 
-       axios.get('http://127.0.0.1:8090/api/footer/')
+       axios.get('http://127.0.0.1:8090/api/todo/')
            .then(response => {
-               const footer = response.data
+               const todo = response.data.results
                    this.setState({
-                       'footer': footer
+                       'todo': todo
                    })
                }
            ).catch(
@@ -56,7 +72,31 @@ class App extends React.Component {
        return (
            <div>
                <MenuList menu={this.state.menu} />
-               <UserList users={this.state.users} />
+               <BrowserRouter>
+                   <nav>
+                       <ul>
+                           <li>
+                               <Link to='/'>Users</Link>
+                           </li>
+                           <li>
+                               <Link to='/project'>Project</Link>
+                           </li>
+                           <li>
+                               <Link to='/todo'>Todo</Link>
+                           </li>
+                       </ul>
+                   </nav>
+                   <Switch>
+                        <Route exact path='/' component={() => <UserList users={this.state.users} />}  />
+                        <Route exact path='/project' component={() => <ProjectList projects={this.state.project} />} />
+                        <Route exact path='/todo' component={() => <TodoList todoes={this.state.todo} />} />
+                        <Route path="/user/:id"><UserProjectsList projects={this.state.project} /></Route>
+                        <Route path="/projectdetail/:id"><ProjectDetail projects={this.state.project} /></Route>
+
+                        <Redirect from='/users' to='/' />
+                        <Route component={NotFound404} />
+                    </Switch>
+                </BrowserRouter>
                <FooterList footer={this.state.footer} />
            </div>
        )
