@@ -17,7 +17,7 @@ class ToDotLimitOffsetPagination(LimitOffsetPagination):
 
 
 class ProjectViewSet(mixins.ListModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
-                     mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+                     mixins.RetrieveModelMixin, viewsets.GenericViewSet, ):
     serializer_class = ProjectSerializer
     queryset = Project.objects.all()
     pagination_class = ProjectLimitOffsetPagination

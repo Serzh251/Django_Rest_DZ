@@ -19,11 +19,11 @@ from rest_framework.decorators import action
 #         queryset = User.objects.all()
 #         serializer_class = UserSerializer(queryset, many=True)
 #         return Response(serializer_class.data)
-#
-#     def retrieve(self, request, pk=None):
-#         article = get_object_or_404(User, pk=pk)
-#         serializer = UserSerializer(article)
-#         return Response(serializer.data)
+
+    # def retrieve(self, request, pk=None):
+    #     article = get_object_or_404(User, pk=pk)
+    #     serializer = UserSerializer(article)
+    #     return Response(serializer.data)
 #
 #     @action(detail=True, methods=['post'])
 #     def article_text_only(self, request, pk=None):
@@ -31,7 +31,6 @@ from rest_framework.decorators import action
 #         return Response({'user.username': user.username})
 
 
-class UserViewSet(mixins.ListModelMixin, mixins.UpdateModelMixin,
-                  mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class UserViewSet(mixins.ListModelMixin, mixins.UpdateModelMixin,mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
