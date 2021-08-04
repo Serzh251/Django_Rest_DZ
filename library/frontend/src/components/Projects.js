@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const ProjectItem = ({project}) => {
+
    return (
        <tr>
            <td>
@@ -11,7 +12,7 @@ const ProjectItem = ({project}) => {
                {project.projectLink}
            </td>
            <td>
-               {project.projectAuthor[0].username}
+               {/*{project.projectAuthor[0].username}*/}
            </td>
        </tr>
    )
