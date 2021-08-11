@@ -12,7 +12,6 @@ class Project(models.Model):
     #     verbose_name_plural = 'Проекты'
 
 
-
 class ToDo(models.Model):
     text = models.TextField()
     author = models.OneToOneField(Project, on_delete=models.CASCADE)
