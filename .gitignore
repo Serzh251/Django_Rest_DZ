@@ -2,3 +2,5 @@
 .idea/
 
 library/library/frontend/node_modules
+
+library/library/__pycache__/settings.cpython-38.pyc

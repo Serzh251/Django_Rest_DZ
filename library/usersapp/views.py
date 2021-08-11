@@ -8,9 +8,9 @@ from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 
 
-# class UserViewSet(ModelViewSet):
-#     serializer_class = UserSerializer
-#     queryset = User.objects.all()
+class UserViewSet(ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
 #
 # class UserViewSet(viewsets.ViewSet):
@@ -31,6 +31,6 @@ from rest_framework.decorators import action
 #         return Response({'user.username': user.username})
 
 
-class UserViewSet(mixins.ListModelMixin, mixins.UpdateModelMixin,mixins.RetrieveModelMixin, viewsets.GenericViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# class UserViewSet(mixins.ListModelMixin, mixins.UpdateModelMixin,mixins.RetrieveModelMixin, viewsets.GenericViewSet, mixins.CreateModelMixin):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 class User(AbstractUser):
