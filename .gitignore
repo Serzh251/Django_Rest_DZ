@@ -4,3 +4,17 @@
 library/library/frontend/node_modules
 
 library/library/__pycache__/settings.cpython-38.pyc
+
+library/library/__pycache__/
+
+library/todo/__pycache__/models.cpython-38.pyc
+
+library/todo/__pycache__/serializers.cpython-38.pyc
+
+library/todo/__pycache__/views.cpython-38.pyc
+
+library/usersapp/__pycache__/models.cpython-38.pyc
+
+library/usersapp/__pycache__/serializers.cpython-38.pyc
+
+library/usersapp/__pycache__/views.cpython-38.pyc
