@@ -4,7 +4,7 @@ from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from .models import Project, ToDo
-from .serializers import ProjectSerializer, ToDoSerializer
+from .serializers import ProjectSerializer, ToDoSerializer, ProjectSerializerBase
 from django_filters import rest_framework as filters
 
 
@@ -29,6 +29,10 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.UpdateModelMixin, mixins.Dest
             return Project.objects.filter(project_name=project_name)
         return Project.objects.all()
 
+    def get_serializer_class(self):
+        if self.request.version == '2.0':
+            return ProjectSerializerBase
+        return ProjectSerializer
 
 class ToDoViewSet(ModelViewSet):
     serializer_class = ToDoSerializer
