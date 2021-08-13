@@ -7,5 +7,5 @@ class User(AbstractUser):
     username = models.CharField(max_length=64, unique=True)
     email = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
-
-    # REQUIRED_FIELDS = ['username']
+    is_staff = models.BooleanField('Personal', default=True)
+    is_superuser = models.BooleanField('Superuser', default=True)

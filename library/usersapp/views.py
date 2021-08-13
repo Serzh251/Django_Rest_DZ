@@ -3,8 +3,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from .models import User
-from .serializers import UserSerializer
-from rest_framework import mixins, viewsets
+from .serializers import UserSerializer, UserSerializerV2
+from rest_framework import mixins, viewsets, generics
 from rest_framework.decorators import action
 
 
@@ -12,7 +12,22 @@ class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-#
+    def get_serializer_class(self):
+        if self.request.version == '0.2':
+            return UserSerializerV2
+        return UserSerializer
+
+
+class UserListAPIView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == '0.2':
+            return UserSerializerV2
+        return UserSerializer
+
+
 # class UserViewSet(viewsets.ViewSet):
 #
 #     def list(self, request):
