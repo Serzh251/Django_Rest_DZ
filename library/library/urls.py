@@ -9,6 +9,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.views.generic import TemplateView
+from graphene_django.views import GraphQLView
 
 
 schema_view = get_schema_view(
@@ -47,4 +48,5 @@ urlpatterns = [
                                              extra_context={'schema_url': 'openapi-schema'}), name='swagger-ui'),
     path('redoc/', TemplateView.as_view(template_name='redoc.html',
                                         extra_context={'schema_url':'openapi-schema'}), name='redoc'),
+    path("graphql/", GraphQLView.as_view(graphiql=True)),
 ]
