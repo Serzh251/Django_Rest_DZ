@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'todo',
     'django_filters',
+    "graphene_django",
     'drf_yasg',
 ]
 
@@ -133,3 +134,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'usersapp.User'
+
+GRAPHENE = {
+    "SCHEMA": "library.schema.schema"
+}
