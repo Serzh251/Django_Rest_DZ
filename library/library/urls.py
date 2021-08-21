@@ -36,6 +36,7 @@ urlpatterns = [
     path('api-token-auth/', views.obtain_auth_token),
     path('api-auth/', include('rest_framework.urls')),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain'),
+    path('', TemplateView.as_view(template_name='index.html')),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     re_path(r'^api/(?P<version>\d\.\d)/users/$', UserListAPIView.as_view()),
     path('api/users/0.1', include('usersapp.urls', namespace='0.1')),

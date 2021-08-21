@@ -18,3 +18,5 @@ library/usersapp/__pycache__/models.cpython-38.pyc
 library/usersapp/__pycache__/serializers.cpython-38.pyc
 
 library/usersapp/__pycache__/views.cpython-38.pyc
+
+library/todo/__pycache__/
