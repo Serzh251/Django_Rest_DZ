@@ -8,10 +8,15 @@ SECRET_KEY = 'django-insecure-k0c2df2s=@txx%3ct_mv-1zk%d7=pwc^+3_1$9i_5i7!rd0_-j
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
    "http://localhost:3000",
+   "http://localhost",
+   "http://localhost:8077",
+   "http://127.0.0.1",
+   "http://127.0.0.1:8077",
+   "http://127.0.0.1:8080",
 ]
 
 REST_FRAMEWORK = {
@@ -34,9 +39,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ],
+    #'DEFAULT_PERMISSION_CLASSES': [
+     #   'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    #],
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
     # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
@@ -106,7 +111,7 @@ DATABASES = {
         'USER': 'admin',
         'PASSWORD': 'qwerty',
         'HOST': '127.0.0.1',
-        'PORT': '8090',
+        'PORT': '5432',
     }
 }
 
