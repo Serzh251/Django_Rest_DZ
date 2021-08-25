@@ -34,21 +34,22 @@ class ProjectViewSet(mixins.ListModelMixin, mixins.UpdateModelMixin, mixins.Dest
             return ProjectSerializerBase
         return ProjectSerializer
 
+
 class ToDoViewSet(ModelViewSet):
     serializer_class = ToDoSerializer
     queryset = ToDo.objects.all()
-    pagination_class = ToDotLimitOffsetPagination
+    # pagination_class = ToDotLimitOffsetPagination
     # filterset_fields = ['author']
 
     # filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = ('author', 'add_datatime', 'update_datatime') # не уверен насколько правильно по заданию
-
-    def destroy(self, request, pk=None):
-        todo = get_object_or_404(ToDo, pk=pk)
-        serializer = ToDoSerializer(todo)
-        todo.is_active = False
-        todo.save()
-        return Response(serializer.data)
+    # filterset_fields = ('author', 'add_datatime', 'update_datatime') # не уверен насколько правильно по заданию
+    #
+    # def destroy(self, request, pk=None):
+    #     todo = get_object_or_404(ToDo, pk=pk)
+    #     serializer = ToDoSerializer(todo)
+    #     todo.is_active = False
+    #     todo.save()
+    #     return Response(serializer.data)
 
 
 # class ToDoViewSet(filters.FilterSet):
