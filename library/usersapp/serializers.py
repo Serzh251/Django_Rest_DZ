@@ -5,5 +5,10 @@ from .models import User
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'last_name', 'email') # у суперюзера поля немного иные
-        # fields = "__all__"
+        fields = ('username', 'last_name', 'email')
+
+
+class UserSerializerV2(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'last_name', 'email', 'is_staff', 'is_superuser')
